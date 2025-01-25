@@ -1,6 +1,7 @@
 {
   "files.readonlyInclude": {
-    "pnpm-lock.yaml": true
+    "pnpm-lock.yaml": true,
+    "packages/api/src/schema.d.ts": true
   },
   "prettier.useEditorConfig": true,
   "typescript.enablePromptUseWorkspaceTsdk": true,

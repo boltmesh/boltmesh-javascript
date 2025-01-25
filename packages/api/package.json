@@ -6,17 +6,36 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
+    },
+    "./react-query": {
+      "types": "./dist/react-query.d.ts",
+      "import": "./dist/react-query.js",
+      "require": "./dist/react-query.cjs"
+    },
+    "./swr": {
+      "types": "./dist/swr.d.ts",
+      "import": "./dist/swr.js",
+      "require": "./dist/swr.cjs"
     }
   },
   "main": "./dist/index.cjs",
   "scripts": {
-    "build": "NODE_ENV=production tsup src/index.ts --format esm,cjs --dts",
-    "dev": "NODE_ENV=development tsup src/index.ts --watch --format esm,cjs --dts --onSuccess 'tsc --emitDeclarationOnly --declaration'",
+    "build": "NODE_ENV=production tsup --entry src/index.ts --entry src/react-query.ts --entry src/swr.ts --format esm,cjs --dts",
+    "dev": "NODE_ENV=development tsup --entry src/index.ts --entry src/react-query.ts --entry src/swr.ts --watch --format esm,cjs --dts --onSuccess 'tsc --emitDeclarationOnly --declaration'",
+    "schema": "openapi-typescript https://api.boltmesh.com/v1/openapi.json -o ./src/schema.d.ts",
     "test": ""
+  },
+  "dependencies": {
+    "openapi-fetch": "^0.13.4",
+    "openapi-react-query": "^0.2.9",
+    "openapi-typescript-helpers": "^0.0.15",
+    "swr": "^2.3.0",
+    "swr-openapi": "^5.1.3"
   },
   "devDependencies": {
     "@boltmesh/tsconfig": "workspace:*",
     "@types/node": "catalog:",
+    "openapi-typescript": "^7.5.2",
     "tsup": "catalog:"
   }
 }
