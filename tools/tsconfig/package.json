@@ -1,0 +1,9 @@
+{
+  "name": "@boltmesh/tsconfig",
+  "private": true,
+  "files": [
+    "base.json",
+    "web.json",
+    "lib.json"
+  ]
+}

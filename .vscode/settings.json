@@ -1,0 +1,8 @@
+{
+  "files.readonlyInclude": {
+    "pnpm-lock.yaml": true
+  },
+  "prettier.useEditorConfig": true,
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "typescript.tsdk": "node_modules/typescript/lib"
+}

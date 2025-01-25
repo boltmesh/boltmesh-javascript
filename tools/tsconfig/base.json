@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleDetection": "force",
+    "moduleResolution": "Bundler",
+    "target": "ESNext",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "noImplicitOverride": true,
+    "noUncheckedIndexedAccess": true,
+    "sourceMap": false,
+    "strict": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "verbatimModuleSyntax": true
+  },
+  "exclude": ["${configDir}/node_modules"],
+  "include": ["${configDir}/src"]
+}

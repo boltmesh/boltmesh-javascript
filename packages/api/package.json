@@ -1,0 +1,22 @@
+{
+  "name": "@boltmesh/api",
+  "version": "0.0.0-alpha",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "scripts": {
+    "build": "NODE_ENV=production tsup src/index.ts --format esm,cjs --dts",
+    "dev": "NODE_ENV=development tsup src/index.ts --watch --format esm,cjs --dts --onSuccess 'tsc --emitDeclarationOnly --declaration'",
+    "test": ""
+  },
+  "devDependencies": {
+    "@boltmesh/tsconfig": "workspace:*",
+    "@types/node": "catalog:",
+    "tsup": "catalog:"
+  }
+}

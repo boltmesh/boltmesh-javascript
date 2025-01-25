@@ -1,0 +1,40 @@
+{
+  "name": "boltmesh-javascript",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "TURBO_TELEMETRY_DISABLED=1 NODE_ENV=production turbo run build",
+    "clean": "rimraf --glob node_modules .turbo **/node_modules **/.turbo **/.next **/dist",
+    "dev": "TURBO_TELEMETRY_DISABLED=1 NODE_ENV=development turbo run dev",
+    "dev:init": "pnpm install && pnpm husky",
+    "lint": "pnpm biome lint --write .",
+    "test": "TURBO_TELEMETRY_DISABLED=1 NODE_ENV=test turbo run test",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@commitlint/cli": "^19.6.1",
+    "@commitlint/config-conventional": "^19.6.0",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.3.0",
+    "prettier": "^3.4.2",
+    "prettier-plugin-packagejson": "^2.5.6",
+    "prettier-plugin-tailwindcss": "^0.6.9",
+    "rimraf": "^6.0.1",
+    "turbo": "^2.3.4",
+    "typescript": "^5.7.2",
+    "vitest": "^3.0.2"
+  },
+  "packageManager": "pnpm@10.0.0",
+  "pnpm": {
+    "peerDependencyRules": {
+      "allowAny": [
+        "*"
+      ],
+      "ignoreMissing": [
+        "*"
+      ]
+    }
+  }
+}

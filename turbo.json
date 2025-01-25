@@ -1,0 +1,20 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalPassThroughEnv": ["TURBO_TELEMETRY_DISABLED", "NODE_ENV"],
+  "tasks": {
+    "dev": {
+      "cache": false,
+      "persistent": true,
+      "inputs": ["$TURBO_DEFAULT$", ".env"]
+    },
+    "test": {
+      "cache": false
+    },
+    "build": {
+      "cache": false,
+      "env": ["NODE_ENV"],
+      "passThroughEnv": ["NODE_ENV"],
+      "dependsOn": ["^build"]
+    }
+  }
+}

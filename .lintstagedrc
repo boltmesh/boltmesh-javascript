@@ -1,0 +1,4 @@
+{
+  "*.{html,css,ts,tsx,yaml,yml,md,mdx}": "prettier --write",
+  "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": "biome lint --write --no-errors-on-unmatched"
+}
