@@ -4,11 +4,12 @@
   "type": "module",
   "scripts": {
     "build": "TURBO_TELEMETRY_DISABLED=1 NODE_ENV=production turbo run build",
+    "ci:publish": "pnpm publish -r",
+    "ci:version": "pnpm changeset version",
     "clean": "rimraf --glob node_modules .turbo **/node_modules **/.turbo **/.next **/dist",
     "dev": "TURBO_TELEMETRY_DISABLED=1 NODE_ENV=development turbo run dev",
     "dev:init": "pnpm install && pnpm husky",
     "lint": "pnpm biome lint --write .",
-    "release": "turbo run build && changeset version && changeset publish",
     "test": "TURBO_TELEMETRY_DISABLED=1 NODE_ENV=test turbo run test"
   },
   "devDependencies": {
