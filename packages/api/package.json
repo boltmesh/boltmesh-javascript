@@ -19,6 +19,8 @@
     }
   },
   "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "build": "NODE_ENV=production tsup --entry src/index.ts --entry src/react-query.ts --entry src/swr.ts --format esm,cjs --dts",
     "dev": "NODE_ENV=development tsup --entry src/index.ts --entry src/react-query.ts --entry src/swr.ts --watch --format esm,cjs --dts --onSuccess 'tsc --emitDeclarationOnly --declaration'",

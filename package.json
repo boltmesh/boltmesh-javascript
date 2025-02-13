@@ -8,11 +8,12 @@
     "dev": "TURBO_TELEMETRY_DISABLED=1 NODE_ENV=development turbo run dev",
     "dev:init": "pnpm install && pnpm husky",
     "lint": "pnpm biome lint --write .",
-    "test": "TURBO_TELEMETRY_DISABLED=1 NODE_ENV=test turbo run test",
-    "prepare": "husky"
+    "release": "turbo run build && changeset version && changeset publish",
+    "test": "TURBO_TELEMETRY_DISABLED=1 NODE_ENV=test turbo run test"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
+    "@changesets/cli": "^2.27.12",
     "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
     "@trivago/prettier-plugin-sort-imports": "^5.2.1",
@@ -26,7 +27,7 @@
     "typescript": "^5.7.2",
     "vitest": "^3.0.2"
   },
-  "packageManager": "pnpm@10.0.0",
+  "packageManager": "pnpm@10.3.0",
   "pnpm": {
     "peerDependencyRules": {
       "allowAny": [
