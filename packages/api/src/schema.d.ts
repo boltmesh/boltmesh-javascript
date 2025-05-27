@@ -4,7 +4,7 @@
  */
 
 export interface paths {
-    "/forms/waitlists": {
+    "/v1/waitlists": {
         parameters: {
             query?: never;
             header?: never;
@@ -12,375 +12,44 @@ export interface paths {
             cookie?: never;
         };
         /** @description Get waitlist projects. */
-        get: {
-            parameters: {
-                query: {
-                    limit: string;
-                    offset: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Successful request. */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["GetWaitlistProjectsResponse"];
-                    };
-                };
-                /** @description Unauthorized. Your root key do not have permissions. */
-                401: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["UnauthorizedResponse"];
-                    };
-                };
-                /** @description Internal server error. */
-                500: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["InternalServerErrorResponse"];
-                    };
-                };
-            };
-        };
+        get: operations["v1.forms.waitlists.getProjects"];
         put?: never;
         /** @description Create a waitlist project. */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": components["schemas"]["CreateWaitlistProjectRequestBody"];
-                };
-            };
-            responses: {
-                /** @description Successful request. */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["CreateWaitlistProjectResponse"];
-                    };
-                };
-                /** @description Unauthorized. Your root key do not have permissions. */
-                401: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["UnauthorizedResponse"];
-                    };
-                };
-                /** @description Internal server error. */
-                500: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["InternalServerErrorResponse"];
-                    };
-                };
-            };
-        };
+        post: operations["v1.forms.waitlists.createProject"];
         delete?: never;
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    "/forms/waitlists/{id}": {
+    "/v1/waitlists/{id}": {
         parameters: {
             query?: never;
             header?: never;
             path?: never;
             cookie?: never;
         };
-        /** @description Get basic information of a waitlist project. */
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Successful request. */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["GetWaitlistProjectResponse"];
-                    };
-                };
-                /** @description Unauthorized. Your root key do not have permissions. */
-                401: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["UnauthorizedResponse"];
-                    };
-                };
-                /** @description Not found. */
-                404: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["NotFoundResponse"];
-                    };
-                };
-                /** @description Internal server error. */
-                500: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["InternalServerErrorResponse"];
-                    };
-                };
-            };
-        };
-        /** @description Update basic information of a waitlist project. */
-        put: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: string;
-                };
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": components["schemas"]["UpdateWaitlistProjectRequestBody"];
-                };
-            };
-            responses: {
-                /** @description Successful request. */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["DeleteWaitlistProjectResponse"];
-                    };
-                };
-                /** @description Unauthorized. Your root key do not have permissions. */
-                401: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["UnauthorizedResponse"];
-                    };
-                };
-                /** @description Not found. */
-                404: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["NotFoundResponse"];
-                    };
-                };
-                /** @description Internal server error. */
-                500: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["InternalServerErrorResponse"];
-                    };
-                };
-            };
-        };
-        /** @description Create a waitlist item for a project. */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": components["schemas"]["CreateWaitlistItemRequestBody"];
-                };
-            };
-            responses: {
-                /** @description Successful request. */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["CreateWaitlistItemtResponse"];
-                    };
-                };
-                /** @description Unauthorized. Your root key do not have permissions. */
-                401: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["UnauthorizedResponse"];
-                    };
-                };
-                /** @description Not found. */
-                404: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["NotFoundResponse"];
-                    };
-                };
-                /** @description Conflict request. */
-                409: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["ConflictResponse"];
-                    };
-                };
-                /** @description Internal server error. */
-                500: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["InternalServerErrorResponse"];
-                    };
-                };
-            };
-        };
+        /** @description Get information of a waitlist project. */
+        get: operations["v1.forms.waitlists.getProject"];
+        /** @description Update a waitlist project. */
+        put: operations["v1.forms.waitlists.updateProject"];
+        post?: never;
         /** @description Delete a waitlist project. */
-        delete: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Successful request. */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["DeleteWaitlistProjectResponse"];
-                    };
-                };
-                /** @description Unauthorized. Your root key do not have permissions. */
-                401: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["UnauthorizedResponse"];
-                    };
-                };
-                /** @description Not found. */
-                404: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["NotFoundResponse"];
-                    };
-                };
-                /** @description Internal server error. */
-                500: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["InternalServerErrorResponse"];
-                    };
-                };
-            };
-        };
+        delete: operations["v1.forms.waitlists.deleteProject"];
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    "/forms/waitlists/{id}/items": {
+    "/v1/waitlists/{id}/count": {
         parameters: {
             query?: never;
             header?: never;
             path?: never;
             cookie?: never;
         };
-        /** @description Get waitlist items of a project. */
-        get: {
-            parameters: {
-                query: {
-                    limit: string;
-                    offset: string;
-                };
-                header?: never;
-                path: {
-                    id: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Successful request. */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["GetWaitlistItemResponse"];
-                    };
-                };
-                /** @description Unauthorized. Your root key do not have permissions. */
-                401: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["UnauthorizedResponse"];
-                    };
-                };
-                /** @description Internal server error. */
-                500: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["InternalServerErrorResponse"];
-                    };
-                };
-            };
-        };
+        /** @description Get total item count of a waitlist project by ID. */
+        get: operations["v1.forms.waitlists.getItemCount"];
         put?: never;
         post?: never;
         delete?: never;
@@ -389,7 +58,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/forms/waitlists/items/{id}": {
+    "/v1/waitlists/{id}/items": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get items of a waitlist project. */
+        get: operations["v1.forms.waitlists.items.getItems"];
+        put?: never;
+        /** @description Create a waitlist item. */
+        post: operations["v1.forms.waitlists.items.createItem"];
+        /** @description Delete waitlist items. */
+        delete: operations["v1.forms.waitlists.items.deleteItems"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/waitlists/{id}/items/{itemId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -397,62 +85,24 @@ export interface paths {
             cookie?: never;
         };
         /** @description Get information of a waitlist item. */
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Successful request. */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["GetWaitlistItemResponse"] & {
-                            /**
-                             * @description Response message.
-                             * @example This is a message.
-                             */
-                            message: string;
-                            item: components["schemas"]["WaitlistItem"];
-                        };
-                    };
-                };
-                /** @description Unauthorized. Your root key do not have permissions. */
-                401: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["UnauthorizedResponse"];
-                    };
-                };
-                /** @description Not found. */
-                404: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["NotFoundResponse"];
-                    };
-                };
-                /** @description Internal server error. */
-                500: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["InternalServerErrorResponse"];
-                    };
-                };
-            };
+        get: operations["v1.forms.waitlists.items.getItem"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/waitlists/{id}/items/email": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
         };
+        /** @description Get information of a waitlist item by email address. */
+        get: operations["v1.forms.waitlists.items.getItemByEmail"];
         put?: never;
         post?: never;
         delete?: never;
@@ -464,160 +114,7 @@ export interface paths {
 }
 export type webhooks = Record<string, never>;
 export interface components {
-    schemas: {
-        WaitlistProject: {
-            id: string;
-            name: string;
-            description: string | null;
-            teamId: string;
-            createdAt: string;
-            /** @enum {string} */
-            createdWay: "dashboard" | "openapi";
-        };
-        CreateWaitlistProjectResponse: {
-            /**
-             * @description Response message.
-             * @example This is a message.
-             */
-            message: string;
-            project: components["schemas"]["WaitlistProject"];
-        };
-        UnauthorizedResponse: {
-            /**
-             * @description Response message.
-             * @example This is a message.
-             */
-            message: string;
-        };
-        InternalServerErrorResponse: {
-            /**
-             * @description Response message.
-             * @example This is a message.
-             */
-            message: string;
-        };
-        CreateWaitlistProjectRequestBody: {
-            /**
-             * @description Name
-             * @example This is a name.
-             */
-            name: string;
-            /**
-             * @description Description
-             * @example This is a description.
-             */
-            description: string;
-        };
-        WaitlistProjectDetail: {
-            id: string;
-            name: string;
-            description: string | null;
-            teamId: string;
-            createdAt: string;
-            /** @enum {string} */
-            createdWay: "dashboard" | "openapi";
-            /**
-             * @description The amount of the resource.
-             * @example 16
-             */
-            total: number;
-        };
-        WaitlistProjects: components["schemas"]["WaitlistProjectDetail"][];
-        GetWaitlistProjectsResponse: {
-            /**
-             * @description Response message.
-             * @example This is a message.
-             */
-            message: string;
-            projects: components["schemas"]["WaitlistProjects"];
-            /**
-             * @description The amount of the resource.
-             * @example 16
-             */
-            total: number;
-        };
-        GetWaitlistProjectResponse: {
-            /**
-             * @description Response message.
-             * @example This is a message.
-             */
-            message: string;
-            project: components["schemas"]["WaitlistProjectDetail"];
-        };
-        NotFoundResponse: {
-            /**
-             * @description Response message.
-             * @example This is a message.
-             */
-            message: string;
-        };
-        DeleteWaitlistProjectResponse: {
-            /**
-             * @description Response message.
-             * @example This is a message.
-             */
-            message: string;
-        };
-        UpdateWaitlistProjectRequestBody: {
-            /**
-             * @description Name
-             * @example This is a name.
-             */
-            name?: string;
-            /**
-             * @description Description
-             * @example This is a description.
-             */
-            description?: string;
-        };
-        WaitlistItem: {
-            id: string;
-            projectId: string;
-            email: string;
-            createdAt: string;
-        };
-        CreateWaitlistItemtResponse: {
-            /**
-             * @description Response message.
-             * @example This is a message.
-             */
-            message: string;
-            item: components["schemas"]["WaitlistItem"];
-        };
-        ConflictResponse: {
-            /**
-             * @description Response message.
-             * @example This is a message.
-             */
-            message: string;
-        };
-        CreateWaitlistItemRequestBody: {
-            /**
-             * Format: email
-             * @description Email address.
-             * @example m@example.com
-             */
-            email: string;
-        };
-        GetWaitlistItemResponse: {
-            /**
-             * @description Response message.
-             * @example This is a message.
-             */
-            message: string;
-            items: components["schemas"]["WaitlistItem"] & {
-                id: string;
-                projectId: string;
-                email: string;
-                createdAt: string;
-            }[];
-            /**
-             * @description The amount of the resource.
-             * @example 16
-             */
-            total: number;
-        };
-    };
+    schemas: never;
     responses: never;
     parameters: never;
     requestBodies: never;
@@ -625,4 +122,474 @@ export interface components {
     pathItems: never;
 }
 export type $defs = Record<string, never>;
-export type operations = Record<string, never>;
+export interface operations {
+    "v1.forms.waitlists.getProjects": {
+        parameters: {
+            query: {
+                search?: string;
+                limit: number;
+                offset: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** @description The response status. */
+                        ok: boolean;
+                        /** @description The reponse messgae. */
+                        message: string;
+                        /** @description Waitlist projects */
+                        projects: {
+                            id: string;
+                            name: string;
+                            description: string | null;
+                            teamId: string;
+                            /** Format: date-time */
+                            createdAt: string;
+                            /** @enum {unknown} */
+                            createdWay: "dashboard" | "openapi";
+                            discordEnabled: boolean | null;
+                            discordMessageType: ("channel_message" | "direct_message") | null;
+                            discordChannelId: string | null;
+                            discordUserId: string | null;
+                            slackEnabled: boolean | null;
+                            slackMessageType: ("channel_message" | "direct_message") | null;
+                            slackChannelId: string | null;
+                            slackUserId: string | null;
+                            /** @description The amount of the resource. */
+                            total: number;
+                        }[];
+                        /** @description The amount of the resource. */
+                        total: number;
+                    };
+                };
+            };
+        };
+    };
+    "v1.forms.waitlists.createProject": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    discordEnabled?: boolean | null;
+                    discordMessageType?: ("channel_message" | "direct_message") | null;
+                    discordChannelId?: string | null;
+                    discordUserId?: string | null;
+                    slackEnabled?: boolean | null;
+                    slackMessageType?: ("channel_message" | "direct_message") | null;
+                    slackChannelId?: string | null;
+                    slackUserId?: string | null;
+                    /** @description Name */
+                    name: string;
+                    /** @description Description */
+                    description: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** @description The response status. */
+                        ok: boolean;
+                        /** @description The reponse messgae. */
+                        message: string;
+                        project: {
+                            id: string;
+                            name: string;
+                            description: string | null;
+                            teamId: string;
+                            /** Format: date-time */
+                            createdAt: string;
+                            /** @enum {unknown} */
+                            createdWay: "dashboard" | "openapi";
+                            discordEnabled: boolean | null;
+                            discordMessageType: ("channel_message" | "direct_message") | null;
+                            discordChannelId: string | null;
+                            discordUserId: string | null;
+                            slackEnabled: boolean | null;
+                            slackMessageType: ("channel_message" | "direct_message") | null;
+                            slackChannelId: string | null;
+                            slackUserId: string | null;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    "v1.forms.waitlists.getProject": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** @description The response status. */
+                        ok: boolean;
+                        /** @description The reponse messgae. */
+                        message: string;
+                        /** @description Waitlist project detail */
+                        project: {
+                            id: string;
+                            name: string;
+                            description: string | null;
+                            teamId: string;
+                            /** Format: date-time */
+                            createdAt: string;
+                            /** @enum {unknown} */
+                            createdWay: "dashboard" | "openapi";
+                            discordEnabled: boolean | null;
+                            discordMessageType: ("channel_message" | "direct_message") | null;
+                            discordChannelId: string | null;
+                            discordUserId: string | null;
+                            slackEnabled: boolean | null;
+                            slackMessageType: ("channel_message" | "direct_message") | null;
+                            slackChannelId: string | null;
+                            slackUserId: string | null;
+                            /** @description The amount of the resource. */
+                            total: number;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    "v1.forms.waitlists.updateProject": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @description Name */
+                    name: string;
+                    /** @description Description */
+                    description: string;
+                    discordEnabled?: boolean;
+                    /** @enum {unknown} */
+                    discordMessageType?: "channel_message" | "direct_message";
+                    discordChannelId?: string;
+                    discordUserId?: string;
+                    slackEnabled?: boolean;
+                    /** @enum {unknown} */
+                    slackMessageType?: "channel_message" | "direct_message";
+                    slackChannelId?: string;
+                    slackUserId?: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** @description The response status. */
+                        ok: boolean;
+                        /** @description The reponse messgae. */
+                        message: string;
+                        project: {
+                            id: string;
+                            name: string;
+                            description: string | null;
+                            teamId: string;
+                            /** Format: date-time */
+                            createdAt: string;
+                            /** @enum {unknown} */
+                            createdWay: "dashboard" | "openapi";
+                            discordEnabled: boolean | null;
+                            discordMessageType: ("channel_message" | "direct_message") | null;
+                            discordChannelId: string | null;
+                            discordUserId: string | null;
+                            slackEnabled: boolean | null;
+                            slackMessageType: ("channel_message" | "direct_message") | null;
+                            slackChannelId: string | null;
+                            slackUserId: string | null;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    "v1.forms.waitlists.deleteProject": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": Record<string, never>;
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** @description The response status. */
+                        ok: boolean;
+                        /** @description The reponse messgae. */
+                        message: string;
+                    };
+                };
+            };
+        };
+    };
+    "v1.forms.waitlists.getItemCount": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** @description The response status. */
+                        ok: boolean;
+                        /** @description The reponse messgae. */
+                        message: string;
+                        /** @description The amount of the resource. */
+                        total: number;
+                    };
+                };
+            };
+        };
+    };
+    "v1.forms.waitlists.items.getItems": {
+        parameters: {
+            query: {
+                search?: string;
+                limit: number;
+                offset: number;
+            };
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** @description The response status. */
+                        ok: boolean;
+                        /** @description The reponse messgae. */
+                        message: string;
+                        items: {
+                            id: string;
+                            projectId: string;
+                            email: string;
+                            /** Format: date-time */
+                            createdAt: string;
+                        }[];
+                        /** @description The amount of the resource. */
+                        total: number;
+                    };
+                };
+            };
+        };
+    };
+    "v1.forms.waitlists.items.createItem": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: email */
+                    email: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** @description The response status. */
+                        ok: boolean;
+                        /** @description The reponse messgae. */
+                        message: string;
+                        item?: {
+                            id: string;
+                            projectId: string;
+                            email: string;
+                            /** Format: date-time */
+                            createdAt: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    "v1.forms.waitlists.items.deleteItems": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    items: string[];
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** @description The response status. */
+                        ok: boolean;
+                        /** @description The reponse messgae. */
+                        message: string;
+                    };
+                };
+            };
+        };
+    };
+    "v1.forms.waitlists.items.getItem": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+                itemId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** @description The response status. */
+                        ok: boolean;
+                        /** @description The reponse messgae. */
+                        message: string;
+                        item: {
+                            id: string;
+                            projectId: string;
+                            email: string;
+                            /** Format: date-time */
+                            createdAt: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+    "v1.forms.waitlists.items.getItemByEmail": {
+        parameters: {
+            query: {
+                email: string;
+            };
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** @description The response status. */
+                        ok: boolean;
+                        /** @description The reponse messgae. */
+                        message: string;
+                        item: {
+                            id: string;
+                            projectId: string;
+                            email: string;
+                            /** Format: date-time */
+                            createdAt: string;
+                        };
+                    };
+                };
+            };
+        };
+    };
+}
