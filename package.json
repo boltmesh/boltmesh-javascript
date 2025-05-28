@@ -1,7 +1,6 @@
 {
   "name": "boltmesh-javascript",
   "private": true,
-  "version": "0.0.0-alpha.6",
   "type": "module",
   "scripts": {
     "build": "TURBO_TELEMETRY_DISABLED=1 NODE_ENV=production turbo run build",

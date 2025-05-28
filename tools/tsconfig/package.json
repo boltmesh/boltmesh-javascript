@@ -1,6 +1,5 @@
 {
   "name": "@boltmesh/tsconfig",
-  "version": "0.0.0-alpha.6",
   "files": [
     "base.json",
     "web.json",

@@ -46,7 +46,7 @@ jobs:
           version: pnpm changeset version
           commit: 'chore: update versions'
           title: 'chore: update versions'
-          publish: pnpm publish -r --access public --no-git-checks
+          publish: pnpm publish -F @boltmesh/api --access public --no-git-checks
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -56,11 +56,30 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Create and push tag
+      - name: Check latest remote tag and current version
+        id: check_version
         run: |
-          VERSION=$(node -p "require('./package.json').version")
-          git tag -a "v$VERSION" -m "Release v$VERSION"
-          git push origin "v$VERSION"
+          git fetch --tags
+          LATEST_TAG=$(git tag --list "v*" --sort=-v:refname | head -n 1)
+          echo "Latest remote tag: $LATEST_TAG"
+          CURRENT_VERSION=$(node -p "require('./packages/api/package.json').version")
+          echo "Current version: $CURRENT_VERSION"
+          LATEST_VERSION=${LATEST_TAG#v}
+          echo "latest_tag=$LATEST_TAG" >> $GITHUB_OUTPUT
+          echo "current_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
+          if [ "$CURRENT_VERSION" = "$LATEST_VERSION" ]; then
+            echo "version_changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "version_changed=true" >> $GITHUB_OUTPUT
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create and push tag (only if version changed)
+        if: steps.check_version.outputs.version_changed == 'true'
+        run: |
+          git tag -a "v${{ steps.check_version.outputs.current_version }}" -m "Release v${{ steps.check_version.outputs.current_version }}"
+          git push origin "v${{ steps.check_version.outputs.current_version }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
