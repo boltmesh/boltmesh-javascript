@@ -1,4 +1,4 @@
-name: Release
+name: Release Workflow
 
 on:
   push:
@@ -28,7 +28,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node }}
+          node-version: 22
           cache: 'pnpm'
 
       - name: Setup npmrc and git
@@ -37,7 +37,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Create Release Pull Request or Publish to npm
+      - name: Version and publish
         id: changesets
         uses: changesets/action@v1
         with:
@@ -48,3 +48,31 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Configure Git user
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Get changed packages
+        id: changed-packages
+        run: |
+          echo "packages=$(pnpm ls --json --depth -1 | jq -c '. as $pkgs | map(select(.private != true) | .name) | flatten')" >> $GITHUB_OUTPUT
+
+      - name: Create and push tag
+        run: |
+          PACKAGES=$(echo "${{ steps.changed-packages.outputs.packages }}" | jq -r '.[]')
+          IFS=$'\n'
+          for package in $PACKAGES; do
+            VERSION=$(pnpm info "$package" version)
+            echo "Tagging $package with version $VERSION"
+            git tag -a "$package@$VERSION" -m "Release $package@$VERSION"
+            git push origin "$package@$VERSION"
+          done
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate Changelog
+        run: npx changelogithub
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
