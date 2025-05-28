@@ -46,7 +46,7 @@ jobs:
           version: pnpm changeset version
           commit: 'chore: update versions'
           title: 'chore: update versions'
-          publish: pnpm publish -F @boltmesh/api --access public --no-git-checks
+          publish: pnpm publish -r --access public --no-git-checks
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
