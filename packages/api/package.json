@@ -27,14 +27,17 @@
     "schema": "openapi-typescript https://api.boltmesh.com/spec.json -o ./src/schema.d.ts"
   },
   "dependencies": {
+    "lodash-es": "^4.17.21",
     "openapi-fetch": "^0.14.0",
     "openapi-react-query": "^0.5.0",
     "openapi-typescript-helpers": "^0.0.15",
     "swr": "^2.3.3",
-    "swr-openapi": "^5.3.0"
+    "swr-openapi": "^5.3.0",
+    "type-fest": "^4.41.0"
   },
   "devDependencies": {
     "@boltmesh/tsconfig": "workspace:*",
+    "@types/lodash-es": "^4.17.12",
     "@types/node": "catalog:",
     "openapi-typescript": "^7.8.0",
     "tsup": "catalog:"
