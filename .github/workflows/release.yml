@@ -54,21 +54,11 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Get changed packages
-        id: changed-packages
-        run: |
-          echo "packages=$(pnpm ls --json --depth -1 | jq -c '. as $pkgs | map(select(.private != true) | .name) | flatten')" >> $GITHUB_OUTPUT
-
       - name: Create and push tag
         run: |
-          PACKAGES=$(echo "${{ steps.changed-packages.outputs.packages }}" | jq -r '.[]')
-          IFS=$'\n'
-          for package in $PACKAGES; do
-            VERSION=$(pnpm info "$package" version)
-            echo "Tagging $package with version $VERSION"
-            git tag -a "$package@$VERSION" -m "Release $package@$VERSION"
-            git push origin "$package@$VERSION"
-          done
+          VERSION=$(node -p "require('./package.json').version")
+          git tag -a "v$VERSION" -m "Release v$VERSION"
+          git push origin "v$VERSION"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
