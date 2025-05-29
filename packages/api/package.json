@@ -1,34 +1,29 @@
 {
   "name": "@boltmesh/api",
-  "version": "0.0.0-alpha.7",
+  "version": "0.0.0-alpha.8",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/boltmesh/boltmesh-javascript.git",
     "directory": "packages/api"
   },
+  "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "types": "./dist/index.d.ts"
     },
     "./react-query": {
-      "types": "./dist/react-query.d.ts",
       "import": "./dist/react-query.js",
-      "require": "./dist/react-query.cjs"
+      "types": "./dist/react-query.d.ts"
     },
     "./swr": {
-      "types": "./dist/swr.d.ts",
       "import": "./dist/swr.js",
-      "require": "./dist/swr.cjs"
+      "types": "./dist/swr.d.ts"
     }
   },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "NODE_ENV=production tsup --entry src/index.ts --entry src/react-query.ts --entry src/swr.ts --format esm,cjs --dts",
-    "dev": "NODE_ENV=development tsup --entry src/index.ts --entry src/react-query.ts --entry src/swr.ts --watch --format esm,cjs --dts --onSuccess 'tsc --emitDeclarationOnly --declaration'",
+    "build": "NODE_ENV=production tsup --entry src/index.ts --entry src/react-query.ts --entry src/swr.ts --format esm --dts",
+    "dev": "NODE_ENV=development tsup --entry src/index.ts --entry src/react-query.ts --entry src/swr.ts --watch --format esm --dts",
     "schema": "openapi-typescript https://api.boltmesh.com/spec.json -o ./src/schema.d.ts"
   },
   "dependencies": {
