@@ -1,6 +1,6 @@
 {
   "name": "@boltmesh/api",
-  "version": "0.0.0-alpha.8",
+  "version": "0.0.0-alpha.9",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/boltmesh/boltmesh-javascript.git",
@@ -21,9 +21,15 @@
       "types": "./dist/swr.d.ts"
     }
   },
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "package.json"
+  ],
   "scripts": {
-    "build": "NODE_ENV=production tsup --entry src/index.ts --entry src/react-query.ts --entry src/swr.ts --format esm --dts",
-    "dev": "NODE_ENV=development tsup --entry src/index.ts --entry src/react-query.ts --entry src/swr.ts --watch --format esm --dts",
+    "build": "tsup --entry src/index.ts --entry src/react-query.ts --entry src/swr.ts --format esm --clean && tsc --emitDeclarationOnly",
+    "dev": "tsup --entry src/index.ts --entry src/react-query.ts --entry src/swr.ts --watch --format esm --clean && tsc --emitDeclarationOnly",
     "schema": "openapi-typescript https://api.boltmesh.com/spec.json -o ./src/schema.d.ts"
   },
   "dependencies": {
