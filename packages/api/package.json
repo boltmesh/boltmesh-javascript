@@ -1,6 +1,6 @@
 {
   "name": "@boltmesh/api",
-  "version": "0.0.0-alpha.9",
+  "version": "0.0.0-alpha.10",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/boltmesh/boltmesh-javascript.git",
@@ -47,8 +47,5 @@
     "@types/node": "catalog:",
     "openapi-typescript": "^7.8.0",
     "tsup": "catalog:"
-  },
-  "publishConfig": {
-    "directory": "dist"
   }
 }
