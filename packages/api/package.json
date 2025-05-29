@@ -47,5 +47,8 @@
     "@types/node": "catalog:",
     "openapi-typescript": "^7.8.0",
     "tsup": "catalog:"
+  },
+  "publishConfig": {
+    "directory": "dist"
   }
 }
