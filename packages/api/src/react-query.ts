@@ -1,5 +1,15 @@
-import createClient from 'openapi-react-query'
+import createClient, { type OpenapiQueryClient } from 'openapi-react-query'
 
-import { api as client } from './api'
+import { BoltmeshOpenAPI } from './api'
+import type { paths } from './schema'
+import type { Input } from './types'
 
-export const api = createClient(client)
+export class BoltmeshOpenAPIReactQuery {
+  public client: OpenapiQueryClient<paths>
+
+  constructor(input: Input) {
+    const api = new BoltmeshOpenAPI({ ...input })
+
+    this.client = createClient(api.client)
+  }
+}
