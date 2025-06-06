@@ -11,10 +11,16 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** @description Get waitlist projects. */
+        /**
+         * Get waitlist projects
+         * @description Get waitlist projects.
+         */
         get: operations["v1.forms.waitlists.getProjects"];
         put?: never;
-        /** @description Create a waitlist project. */
+        /**
+         * Create a waitlist project
+         * @description Create a waitlist project.
+         */
         post: operations["v1.forms.waitlists.createProject"];
         delete?: never;
         options?: never;
@@ -29,12 +35,21 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** @description Get information of a waitlist project. */
+        /**
+         * Get a waitlist project
+         * @description Get information of a waitlist project.
+         */
         get: operations["v1.forms.waitlists.getProject"];
-        /** @description Update a waitlist project. */
+        /**
+         * Update a waitlist project
+         * @description Update a waitlist project.
+         */
         put: operations["v1.forms.waitlists.updateProject"];
         post?: never;
-        /** @description Delete a waitlist project. */
+        /**
+         * Delete a waitlist project
+         * @description Delete a waitlist project.
+         */
         delete: operations["v1.forms.waitlists.deleteProject"];
         options?: never;
         head?: never;
@@ -48,7 +63,10 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** @description Get total item count of a waitlist project by ID. */
+        /**
+         * Get waitlist item count of a project
+         * @description Get total item count of a waitlist project by ID.
+         */
         get: operations["v1.forms.waitlists.getItemCount"];
         put?: never;
         post?: never;
@@ -65,12 +83,21 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** @description Get items of a waitlist project. */
+        /**
+         * Get waitlist items
+         * @description Get items of a waitlist project.
+         */
         get: operations["v1.forms.waitlists.items.getItems"];
         put?: never;
-        /** @description Create a waitlist item. */
+        /**
+         * Create a waitlist item
+         * @description Create a waitlist item.
+         */
         post: operations["v1.forms.waitlists.items.createItem"];
-        /** @description Delete waitlist items. */
+        /**
+         * Delete waitlist items
+         * @description Delete waitlist items.
+         */
         delete: operations["v1.forms.waitlists.items.deleteItems"];
         options?: never;
         head?: never;
@@ -84,7 +111,10 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** @description Get information of a waitlist item. */
+        /**
+         * Get a waitlist item
+         * @description Get information of a waitlist item.
+         */
         get: operations["v1.forms.waitlists.items.getItem"];
         put?: never;
         post?: never;
@@ -101,7 +131,10 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** @description Get information of a waitlist item by email address. */
+        /**
+         * Get a waitlist item by email
+         * @description Get information of a waitlist item by email address.
+         */
         get: operations["v1.forms.waitlists.items.getItemByEmail"];
         put?: never;
         post?: never;
@@ -483,6 +516,8 @@ export interface operations {
                             /** Format: date-time */
                             createdAt: string;
                         };
+                        /** @description The amount of the resource. */
+                        total?: number;
                     };
                 };
             };

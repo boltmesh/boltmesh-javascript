@@ -1,1 +1,0 @@
-export { BoltmeshOpenAPI } from './api'

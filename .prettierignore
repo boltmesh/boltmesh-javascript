@@ -1,2 +1,3 @@
 pnpm-lock.yaml
 packages/api/src/schema.d.ts
+dist

@@ -1,6 +1,6 @@
 {
   "name": "@boltmesh/api",
-  "version": "0.0.0-alpha.14",
+  "version": "0.0.0-alpha.15",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/boltmesh/boltmesh-javascript.git",
@@ -9,8 +9,8 @@
   "type": "module",
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "import": "./dist/api.js",
+      "types": "./dist/api.d.ts"
     },
     "./react-query": {
       "import": "./dist/react-query.js",
@@ -19,8 +19,7 @@
     "./swr": {
       "import": "./dist/swr.js",
       "types": "./dist/swr.d.ts"
-    },
-    "./schema": "./dist/schema.d.ts"
+    }
   },
   "files": [
     "dist",
@@ -28,9 +27,8 @@
     "package.json"
   ],
   "scripts": {
-    "build": "tsup --entry src/index.ts --entry src/react-query.ts --entry src/swr.ts --format esm --dts --clean",
-    "dev": "tsup --entry src/index.ts --entry src/react-query.ts --entry src/swr.ts --watch --format esm --dts --clean",
-    "schema": "openapi-typescript https://api.boltmesh.com/spec.json -o ./src/schema.d.ts"
+    "build": "tsup --entry src/api.ts --entry src/react-query.ts --entry src/swr.ts --format esm --dts --clean onSuccess 'tsc --emitDeclarationOnly --declaration'",
+    "schema": "openapi-typescript http://localhost:3011/spec.json -o ./src/schema.d.ts"
   },
   "dependencies": {
     "lodash-es": "^4.17.21",

@@ -1,7 +1,7 @@
 import createClient, { type OpenapiQueryClient } from 'openapi-react-query'
 
 import { BoltmeshOpenAPI } from './api'
-import type { paths } from './schema'
+import type { paths } from './schema.d'
 import type { Input } from './types'
 
 export class BoltmeshOpenAPIReactQuery {
