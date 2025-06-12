@@ -195,6 +195,7 @@ export interface operations {
                             discordChannelId: string | null;
                             discordUserId: string | null;
                             slackEnabled: boolean | null;
+                            slackWorkspaceId: string | null;
                             slackMessageType: ("channel_message" | "direct_message") | null;
                             slackChannelId: string | null;
                             slackUserId: string | null;
@@ -223,6 +224,7 @@ export interface operations {
                     discordChannelId?: string | null;
                     discordUserId?: string | null;
                     slackEnabled?: boolean | null;
+                    slackWorkspaceId?: string | null;
                     slackMessageType?: ("channel_message" | "direct_message") | null;
                     slackChannelId?: string | null;
                     slackUserId?: string | null;
@@ -259,6 +261,7 @@ export interface operations {
                             discordChannelId: string | null;
                             discordUserId: string | null;
                             slackEnabled: boolean | null;
+                            slackWorkspaceId: string | null;
                             slackMessageType: ("channel_message" | "direct_message") | null;
                             slackChannelId: string | null;
                             slackUserId: string | null;
@@ -305,6 +308,7 @@ export interface operations {
                             discordChannelId: string | null;
                             discordUserId: string | null;
                             slackEnabled: boolean | null;
+                            slackWorkspaceId: string | null;
                             slackMessageType: ("channel_message" | "direct_message") | null;
                             slackChannelId: string | null;
                             slackUserId: string | null;
@@ -338,6 +342,7 @@ export interface operations {
                     discordChannelId?: string;
                     discordUserId?: string;
                     slackEnabled?: boolean;
+                    slackWorkspaceId?: string;
                     /** @enum {unknown} */
                     slackMessageType?: "channel_message" | "direct_message";
                     slackChannelId?: string;
@@ -371,6 +376,7 @@ export interface operations {
                             discordChannelId: string | null;
                             discordUserId: string | null;
                             slackEnabled: boolean | null;
+                            slackWorkspaceId: string | null;
                             slackMessageType: ("channel_message" | "direct_message") | null;
                             slackChannelId: string | null;
                             slackUserId: string | null;
