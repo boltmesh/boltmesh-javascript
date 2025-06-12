@@ -1,6 +1,6 @@
 {
   "name": "@boltmesh/api",
-  "version": "0.0.0-alpha.17",
+  "version": "0.0.1",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/boltmesh/boltmesh-javascript.git",

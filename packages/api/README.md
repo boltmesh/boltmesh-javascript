@@ -55,10 +55,14 @@ const MyComponent = () => {
 ### SWR
 
 ```tsx
-import { useQuery } from '@boltmesh/api/swr'
+import { BoltmeshOpenAPISWR } from '@boltmesh/api/swr'
+
+const api = new BoltmeshOpenAPISWR({
+  rootKey: "[Your team's root key]"
+})
 
 const MyComponent = () => {
-  const { data, error, isLoading } = api.client.useQuery('get', '/v1/waitlists/{id}/count', {
+  const { data, error, isLoading } = api.useQuery('/v1/waitlists/{id}/count', {
     params: {
       path: {
         id: '[Project ID]'
