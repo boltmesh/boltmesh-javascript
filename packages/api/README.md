@@ -11,17 +11,16 @@ npm install @boltmesh/api
 ### Basic Usage
 
 ```ts
-import { api } from '@boltmesh/api'
+import { BoltmeshOpenAPI } from '@boltmesh/api'
 
-const { data, error } = await api.GET('/v1/waitlists', {
-  headers: {
-    Authentication: "Bearer [Your team's root key]"
-  },
+const boltmeshOpenAPI = new BoltmeshOpenAPI({
+  rootKey: "[Your team's root key]"
+})
+
+const { data, error } = await boltmeshOpenAPI.client.GET('/v1/waitlists/{id}', {
   params: {
-    query: {
-      search: 'My Project Name',
-      limit: 10,
-      offset: 0
+    path: {
+      id: 'xxx'
     }
   }
 })
@@ -30,27 +29,26 @@ const { data, error } = await api.GET('/v1/waitlists', {
 ### React Query
 
 ```tsx
-import { api } from '@boltmesh/api/react-query'
+import { BoltmeshOpenAPIReactQuery } from '@boltmesh/api/react-query'
+
+const api = new BoltmeshOpenAPIReactQuery({
+  rootKey: "[Your team's root key]"
+})
 
 const MyComponent = () => {
-  const { data, error, isLoading } = api.useQuery('get', '/v1/waitlists', {
-    headers: {
-      Authentication: "Bearer [Your team's root key]"
-    },
+  const { data, error, isLoading } = api.client.useQuery('get', '/v1/waitlists/{id}/count', {
     params: {
-      query: {
-        search: 'My Project Name',
-        limit: 10,
-        offset: 0
+      path: {
+        id: '[Project ID]'
       }
     }
   })
 
   if (isLoading || !data) return 'Loading...'
 
-  if (error) return `An error occured: ${error.message}`
+  if (error) return `An error occured: ${error}`
 
-  return <div>Waitlist project count: {data?.projects.length ?? 0}</div>
+  return <div>Waitlist item count: {data?.total ?? 0}</div>
 }
 ```
 
@@ -60,23 +58,18 @@ const MyComponent = () => {
 import { useQuery } from '@boltmesh/api/swr'
 
 const MyComponent = () => {
-  const { data, error, isLoading } = useQuery('/v1/waitlists', {
-    headers: {
-      Authentication: "Bearer [Your team's root key]"
-    },
+  const { data, error, isLoading } = api.client.useQuery('get', '/v1/waitlists/{id}/count', {
     params: {
-      query: {
-        search: 'My Project Name',
-        limit: 10,
-        offset: 0
+      path: {
+        id: '[Project ID]'
       }
     }
   })
 
   if (isLoading || !data) return 'Loading...'
 
-  if (error) return `An error occured: ${error.message}`
+  if (error) return `An error occured: ${error}`
 
-  return <div>Waitlist project count: {data?.projects.length ?? 0}</div>
+  return <div>Waitlist item count: {data?.total ?? 0}</div>
 }
 ```
