@@ -20,7 +20,7 @@ const boltmeshOpenAPI = new BoltmeshOpenAPI({
 const { data, error } = await boltmeshOpenAPI.client.GET('/v1/waitlists/{id}', {
   params: {
     path: {
-      id: 'xxx'
+      id: '[Project ID]'
     }
   }
 })
